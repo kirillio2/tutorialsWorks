@@ -1,4 +1,4 @@
-# DOCKER - django
+# DOCKER - django start
 
 Dockerfile:
 FROM python:3
@@ -32,7 +32,19 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     container_name: pgdb
+    # Все наши знчения будут хранится на удаленой машине
+    volumes:
+      - pgdbdata:/var/lib/postgresql/data
+
+volumes:
+  pgdbdata: null
     
 ![image](https://github.com/kirillio2/tutorialsWorks/assets/65582386/4c8e7d4e-0911-44b8-9375-99283c6dfce6)
 
-docker-compose run django django-admin startproject itp roger .
+docker-compose run django django-admin startproject nameproject .
+
+docker-compose up
+
+Далее используем уже django команды, таким путем: 
+docker-compose run django python manage.py migrate
+docker-compose run django python manage.py createsuperuser
