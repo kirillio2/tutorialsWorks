@@ -1,0 +1,10 @@
+Если делать через resource
+
+Route::resource('educations', EducationController::class);
+
+
+нельзя делать: 
+public function update(Request $request, TutorEducation $tutorEducation)
+
+можно делать: 
+public function update(Request $request, TutorEducation $education)
